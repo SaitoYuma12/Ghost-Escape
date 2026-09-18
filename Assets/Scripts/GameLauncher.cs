@@ -1,16 +1,20 @@
+using Fusion;
 using UnityEngine;
 
 public class GameLauncher : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]private NetworkRunner networkRunnerPrefab;
 
-    // Update is called once per frame
-    void Update()
+    private async void Start()
     {
-        
+        // NetworkRunnerを生成する
+        var networkRunner = Instantiate(networkRunnerPrefab);
+        // 共有モードのセッションに参加する
+        var result = await networkRunner.StartGame(new StartGameArgs
+        {
+            GameMode = GameMode.Shared
+        });
+        // 結果をコンソールに出力する
+        Debug.Log(result);
     }
 }
