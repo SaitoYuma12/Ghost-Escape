@@ -413,6 +413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameLauncher
   networkRunnerPrefab: {fileID: 8742660264391201617, guid: 6cb1b053f2921404ab0a05d3cbd2830b, type: 3}
+  playerAvatarPrefab:
+    RawGuidValue: 099edfa249106234b9f25f91d729b3e2
 --- !u!4 &448761386
 Transform:
   m_ObjectHideFlags: 0

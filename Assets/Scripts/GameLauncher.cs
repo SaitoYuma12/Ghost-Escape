@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameLauncher : MonoBehaviour
 {
     [SerializeField]private NetworkRunner networkRunnerPrefab;
-
+    [SerializeField]private NetworkPrefabRef playerAvatarPrefab;
     private async void Start()
     {
         // NetworkRunner‚ğ¶¬‚·‚é
