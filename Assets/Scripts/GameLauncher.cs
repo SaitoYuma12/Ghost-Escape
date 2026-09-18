@@ -22,7 +22,17 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
 
      void INetworkRunnerCallbacks.OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
      void INetworkRunnerCallbacks.OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player) { }
-     void INetworkRunnerCallbacks.OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
+    void INetworkRunnerCallbacks.OnPlayerJoined(NetworkRunner runner, PlayerRef player)
+    {
+        if (player == runner.LocalPlayer)
+        {
+            // アバターの初期位置を計算する（半径5の円の内部のランダムな点）
+            var rand = UnityEngine.Random.insideUnitCircle * 5f;
+            var spawnPosition = new Vector3(rand.x, 2f, rand.y);
+            // 自分自身のアバターをスポーンする
+            runner.Spawn(playerAvatarPrefab, spawnPosition, Quaternion.identity);
+        }
+    }
      void INetworkRunnerCallbacks.OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
      void INetworkRunnerCallbacks.OnInput(NetworkRunner runner, NetworkInput input) { }
      void INetworkRunnerCallbacks.OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
